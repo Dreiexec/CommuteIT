@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>Dashboard — CommuteIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=80">
+  <link rel="icon" type="image/png" href="assets/commuteit-logo.svg">
+<link rel="stylesheet" href="css/mobile-v51-fix.css">
+<link rel="stylesheet" href="css/tutorial.css?v=80">
+</head>
+<body class="app-page">
+  <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-top">
+      <a class="brand" href="dashboard.html"><img class="brand-logo" src="assets/commuteit-logo.svg" alt="CommuteIT logo"><span>CommuteIT</span></a>
+      <button id="closeSidebar" class="icon-btn mobile-only" aria-label="Close menu">×</button>
+    </div>
+
+    <div class="profile-mini">
+      <div class="avatar" id="profileAvatar">D</div>
+      <div>
+        <strong id="profileName">Anonymous</strong>
+        <span>Commuter</span>
+      </div>
+    </div>
+
+    <nav class="side-nav">
+      <a class="side-link active" href="#dashboard" data-section="dashboard"><span>⌂</span>Dashboard</a>
+      <a class="side-link" href="#planner" data-section="planner"><span>⌖</span>Route Planner</a>
+      <a class="side-link" href="#trips" data-section="trips"><span>↻</span>My Trips</a>
+      <a class="side-link" href="#saved" data-section="saved"><span>★</span>Saved Routes</a>
+      <a class="side-link" href="#reports" data-section="reports"><span>▣</span>Reports</a>
+      <a class="side-link" href="#community" data-section="community"><span>♡</span>Community</a>
+    </nav>
+
+    <div class="side-bottom">
+      <a class="side-link" href="#settings" data-section="settings"><span>⚙</span>Settings</a>
+      <a class="side-link" href="#about" data-section="about"><span>ⓘ</span>About</a>
+      <button id="logoutBtn" class="side-link side-button"><span>↪</span>Log out</button>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-header">
+      <button id="openSidebar" class="icon-btn mobile-only" aria-label="Open menu"><span class="hamburger-lines" aria-hidden="true"></span></button>
+      <div class="header-title">
+        <span class="eyebrow">COMMUTEIT</span>
+        <strong id="sectionTitle">Dashboard</strong>
+      </div>
+      <div class="header-actions">
+        <button id="dashboardInfoBtn" class="btn btn-outline compact tutorial-start-btn" type="button" aria-label="Start Tutorial">Start Tutorial</button>
+        <div id="siteInfo" class="site-info" aria-label="Manila time and weather">
+          <button type="button" id="clockToggle" class="site-clock" title="Switch time format" aria-label="Switch time format">--:--:--</button>
+          <button type="button" id="tempToggle" class="site-weather" title="Switch temperature unit" aria-label="Switch temperature unit"><span id="weatherIcon" class="weather-icon" aria-hidden="true">☀</span><span id="weatherText">Weather</span><span id="weatherTemp">--°C</span></button>
+        </div>
+        
+      </div>
+    </header>
+
+    <main class="app-content">
+      <section id="section-dashboard" class="page-section active-section">
+        <div class="section-heading" data-tour="dashboard-overview">
+          <div><span class="eyebrow">OVERVIEW</span><h1><span id="greetingText">Good morning</span>, <span id="greetingName">Anonymous</span>.</h1><p>Your commuting overview at a glance.</p></div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>CO₂ saved</span><strong id="dashCo2">0.0 kg</strong><small>from saved trips</small></article>
+          <article class="stat-card"><span>Trips logged</span><strong id="dashTrips">0</strong><small>your account</small></article>
+          <article class="stat-card"><span>Saved routes</span><strong id="dashSaved">0</strong><small>ready to reuse</small></article>
+          <article class="stat-card"><span>Eco score</span><strong id="dashScore">—</strong><small>based on latest route</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel quick-panel" data-tour="quick-route">
+            <div class="panel-head"><div><span class="eyebrow">QUICK ROUTE</span><h2>Where are you going?</h2></div></div>
+            <div class="quick-route-row">
+              <label>From<input id="dashFrom" placeholder="From" autocomplete="off"></label>
+              <button id="dashSwapBtn" class="route-swap-btn" type="button" aria-label="Switch From and To">⇄</button>
+              <label>To<input id="dashTo" placeholder="To" autocomplete="off"></label>
+            </div>
+            <button id="dashPlanBtn" class="btn btn-primary">Plan route</button>
+          </article>
+          <article class="panel sustainability-panel" data-tour="sustainability">
+            <div class="sustainability-head">
+              <div>
+                <span class="eyebrow">SUSTAINABILITY IMPACT</span>
+                <p class="impact-label">You've saved the equivalent of</p>
+                <strong id="treeEquivalent" class="tree-equivalent">1.6 Trees</strong>
+                <p class="impact-label">in CO₂ emissions 🌳</p>
+              </div>
+              <select id="impactPeriod" class="impact-period" aria-label="Impact period">
+                <option>This Week</option>
+                <option>This Month</option>
+                <option>All Time</option>
+              </select>
+            </div>
+            <div class="impact-visual">
+              <div class="tree-landscape" aria-hidden="true">
+                <svg viewBox="0 0 320 120" role="img" aria-label="Green tree landscape">
+                  <path d="M0 105 C48 92 76 98 112 88 C153 76 183 94 218 86 C254 78 285 91 320 79 L320 120 L0 120 Z" fill="#dcefe4"/>
+                  <path d="M0 110 C55 98 92 104 130 94 C176 82 214 100 253 91 C278 85 299 91 320 86 L320 120 L0 120 Z" fill="#6b9b68"/>
+                  <path d="M0 116 C52 107 84 111 122 101 C169 90 207 109 244 99 C274 91 299 98 320 92 L320 120 L0 120 Z" fill="#2f6e4f"/>
+                  <g fill="#4f8f5a">
+                    <circle cx="40" cy="66" r="16"/><circle cx="55" cy="57" r="19"/><circle cx="70" cy="69" r="14"/>
+                    <circle cx="104" cy="48" r="20"/><circle cx="121" cy="59" r="17"/><circle cx="90" cy="62" r="15"/>
+                    <circle cx="154" cy="73" r="14"/><circle cx="166" cy="64" r="18"/><circle cx="181" cy="76" r="13"/>
+                    <circle cx="212" cy="61" r="15"/><circle cx="224" cy="52" r="18"/><circle cx="239" cy="67" r="14"/>
+                  </g>
+                  <g fill="#2f6e4f">
+                    <rect x="53" y="68" width="5" height="30" rx="2"/><rect x="103" y="61" width="6" height="38" rx="2"/><rect x="164" y="77" width="5" height="24" rx="2"/><rect x="221" y="69" width="5" height="29" rx="2"/>
+                  </g>
+                  <g fill="#75aa69">
+                    <path d="M270 96 L278 64 L286 96 Z"/><path d="M287 98 L295 57 L303 98 Z"/><path d="M303 99 L310 70 L317 99 Z"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="impact-ring" id="impactRing" style="--progress:64%"><span id="impactPercent">64%</span></div>
+            </div>
+            <div class="impact-footer" id="impactGoalLabel">of your weekly goal</div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><span class="eyebrow">WHY COMMUTEIT</span><h2>One trip, more context</h2></div></div>
+            <div class="feature-list">
+              <div><span class="feature-icon">↗</span><div><strong>Live route distance</strong><p>Google Maps routing provides route distance and estimated duration.</p></div></div>
+              <div><span class="feature-icon">CO₂</span><div><strong>Emission comparison</strong><p>Estimate carbon impact from route distance and travel mode.</p></div></div>
+              <div><span class="feature-icon">₱</span><div><strong>Fare guidance</strong><p>Show route-level fare estimates with clearly labeled assumptions.</p></div></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="section-planner" class="page-section" data-tour="route-planner">
+        <div class="section-heading">
+          <div><span class="eyebrow">SMART ROUTING</span><h1>Route Planner</h1><p>Choose a destination and compare greener travel options.</p></div>
+          
+        </div>
+
+        <article class="panel planner-panel">
+          <div id="plannerChooser" class="planner-chooser">
+            <div class="planner-chooser-copy">
+              <span class="eyebrow">CHOOSE YOUR ROUTE TYPE</span>
+              <h2>How are you travelling?</h2>
+              <p>Select a mode first. The map and route controls will appear only after you choose one.</p>
+            </div>
+            <div class="planner-choice-stack">
+              <button type="button" id="commuteModeBtn" class="planner-choice planner-choice-primary">
+                <span class="choice-icon">↔</span>
+                <span><strong>Commute Mode</strong><small>Bus, Train, Taxi or Jeepney</small></span>
+                <span class="choice-arrow">›</span>
+              </button>
+              <button type="button" id="privateVehicleBtn" class="planner-choice planner-choice-outline">
+                <span class="choice-icon">⌂</span>
+                <span><strong>Private Vehicle</strong><small>Recommended, Walk, Bike or Drive</small></span>
+                <span class="choice-arrow">›</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="plannerModePanel" class="planner-mode-panel hidden">
+            <div class="mode-panel-top">
+              <button type="button" id="backToPlannerChoices" class="back-mode-btn">← Change route type</button>
+              <span id="plannerModeLabel" class="mode-context-pill">Private Vehicle</span>
+            </div>
+
+            <div id="commuteIntro" class="commute-intro hidden">
+              <span class="eyebrow">SMART COMMUTE</span>
+              <h3>Find what you need to take</h3>
+              <p>CommuteIT uses live public-transit routing to identify the vehicles, lines, stops and transfers in the itinerary.</p>
+            </div>
+
+            <div id="privateModeFolder" class="mode-folder hidden">
+              <div class="mode-folder-heading"><div><span class="eyebrow">PRIVATE VEHICLE</span><h3>Choose a private travel mode</h3></div><span class="folder-tag">4 options</span></div>
+              <div class="mode-option-grid">
+                <button type="button" class="mode-option active" data-route-mode="BEST"><strong>Recommended</strong><small>Best overall route</small></button>
+                <button type="button" class="mode-option" data-route-mode="WALKING"><strong>Walk</strong><small>Walking route</small></button>
+                <button type="button" class="mode-option" data-route-mode="BICYCLING"><strong>Bike</strong><small>Bicycle route</small></button>
+                <button type="button" class="mode-option" data-route-mode="DRIVING"><strong>Drive</strong><small>Private car route</small></button>
+              </div>
+            </div>
+
+            <div id="plannerWorkspace" class="planner-workspace hidden">
+              <div class="planner-form">
+                <input id="fromInput" aria-label="From location" placeholder="From" autocomplete="off">
+                <button type="button" id="swapRouteBtn" class="swap-route-btn" aria-label="Exchange From and To" title="Exchange From and To">⇄</button>
+                <input id="toInput" aria-label="To location" placeholder="To" autocomplete="off">
+                <input type="hidden" id="modeSelect" value="BEST">
+              </div>
+              <div id="trainFarePreview" class="train-fare-preview hidden"></div>
+              <div id="commuteItinerary" class="commute-itinerary hidden"></div>
+              <div class="route-preferences" aria-label="Route preferences">
+                <label class="preference-check"><input id="lessWalkingPref" type="checkbox"><span><strong>Less walking</strong><small>Prefer routes with shorter walking links when alternatives are available.</small></span></label>
+                <label class="preference-check"><input id="fewerTransfersPref" type="checkbox"><span><strong>Fewer transfers</strong><small>Prefer simpler public-transit itineraries when alternatives are available.</small></span></label>
+                <label class="preference-check"><input id="accessibilityPref" type="checkbox"><span><strong>Accessibility-friendly</strong><small>Prioritize simpler walking/transfer patterns; verify elevator and ramp availability at stations.</small></span></label>
+              </div>
+              <div id="weatherRouteNote" class="weather-route-note hidden"></div>
+              <div class="planner-actions">
+                <button id="routeBtn" class="btn btn-primary">Show route</button>
+                <button id="useLocationBtn" class="btn btn-outline">Use my location</button>
+                <button id="clearRouteBtn" class="btn btn-ghost">Clear</button>
+              </div>
+
+              <div id="mapShell" class="map-shell">
+                <div id="map" class="map"></div>
+                <div class="traffic-legend" aria-label="Live road traffic legend">
+                  <strong>Live road conditions</strong>
+                  <span><i class="traffic-swatch traffic-green"></i>Normal</span>
+                  <span><i class="traffic-swatch traffic-yellow"></i>Slow</span>
+                  <span><i class="traffic-swatch traffic-red"></i>Heavy</span>
+                </div>
+                <div id="mapLoading" class="map-loading"><div class="spinner"></div><span>Loading Google Maps…</span></div>
+              </div>
+
+              <div id="routeSummary" class="route-summary empty">
+                <strong>Route details will appear here.</strong>
+                <span>Enter an origin and destination, then choose “Show route”.</span>
+              </div>
+
+              <div id="routeCards" class="route-cards"></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="section-trips" class="page-section" data-tour="my-trips">
+        <div class="section-heading"><div><span class="eyebrow">HISTORY</span><h1>My Trips</h1><p>Your completed and saved route activity.</p></div></div>
+        <article class="panel"><div id="tripsList" class="empty-state">No trips yet. Plan a route to start building your history.</div></article>
+      </section>
+
+      <section id="section-saved" class="page-section" data-tour="saved-routes">
+        <div class="section-heading"><div><span class="eyebrow">PERSONAL</span><h1>Saved Routes</h1><p>Edit or remove your saved routes anytime.</p></div></div>
+        <article class="panel"><div id="savedList" class="saved-list"></div></article>
+      </section>
+
+      <section id="section-reports" class="page-section" data-tour="reports">
+        <div class="section-heading"><div><span class="eyebrow">INSIGHTS</span><h1>Reports</h1></div></div>
+        <div class="report-grid">
+          <article class="report-card"><span class="report-number">01</span><h3>Route Recommendation</h3><strong id="reportRecRoute">—</strong><p id="reportRecMeta">Plan a route to generate this report.</p></article>
+          <article class="report-card"><span class="report-number">02</span><h3>Estimated Travel Time</h3><strong id="reportTime">—</strong><p id="reportTimeMeta">Latest route estimate.</p></article>
+          <article class="report-card"><span class="report-number">03</span><h3>CO₂ Emission Reduction</h3><strong id="reportCo2">—</strong><p id="reportCo2Meta">Based on your logged trips.</p></article>
+          <article class="report-card"><span class="report-number">04</span><h3>Transportation Mode Comparison</h3><div id="modeComparison" class="mini-table"></div></article>
+          <article class="report-card"><span class="report-number">05</span><h3>User Travel History</h3><strong id="reportHistoryCount">0 trips</strong><p id="reportHistoryMeta">No completed trips yet.</p></article>
+          <article class="report-card"><span class="report-number">06</span><h3>Cost Comparison</h3><div id="costComparison" class="mini-table"></div></article>
+          <article class="report-card"><span class="report-number">07</span><h3>Traffic Congestion Analysis</h3><strong id="trafficLevel">—</strong><p id="trafficMeta">Run a driving route to measure live delay.</p></article>
+          <article class="report-card"><span class="report-number">08</span><h3>Popular Routes</h3><div id="popularRoutes" class="popular-list"><p>No route history yet.</p></div></article>
+          <article class="report-card wide"><span class="report-number">09</span><h3>Sustainability Impact Dashboard</h3><div class="impact-report-grid"><div><strong id="reportSavedCo2">0.0 kg</strong><span>estimated CO₂ from logged trips</span></div><div><strong id="reportTreeCount">0.0</strong><span>tree-equivalent units</span></div><div><strong id="reportEcoAvg">—</strong><span>average Eco-Score</span></div></div></article>
+          <article class="report-card wide"><span class="report-number">10</span><h3>Recommendation Accuracy</h3><strong id="accuracyValue">No feedback yet</strong><p id="accuracyMeta">After each route, rate whether the recommendation was useful. Accuracy is calculated from your feedback.</p></article>
+        </div>
+        <article class="panel planning-panel">
+          <div class="panel-head"><div><span class="eyebrow">GOVERNMENT PLANNING</span><h2>Metro Manila planning insights</h2></div><span class="live-pill">Aggregated</span></div>
+          <div id="governmentInsights" class="planning-insights"><p>Aggregated planning data will appear after trips are available. Individual user identities are never displayed.</p></div>
+        </article>
+      </section>
+
+      <section id="section-community" class="page-section" data-tour="community">
+        <div class="section-heading"><div><span class="eyebrow">COMMUNITY</span><h1>Carpool matching</h1><p>Post a commute and find other commuters with a similar route.</p></div></div>
+        <div class="community-grid">
+          <article class="panel">
+            <div class="panel-head"><div><span class="eyebrow">CREATE A MATCH</span><h2>Offer a seat</h2></div></div>
+            <div class="carpool-route-row" aria-label="Carpool route">
+              <input id="carpoolFrom" class="route-field-input" placeholder="From" aria-label="Carpool From" autocomplete="off">
+              <button id="carpoolSwapBtn" class="route-swap-btn" type="button" aria-label="Switch From and To" title="Switch From and To">⇄</button>
+              <input id="carpoolTo" class="route-field-input" placeholder="To" aria-label="Carpool To" autocomplete="off">
+            </div>
+            <div class="two-col"><label>Departure<input id="carpoolTime" type="datetime-local"></label><label>Seats<input id="carpoolSeats" type="number" min="1" max="6" value="1"></label></div>
+            <button id="postCarpoolBtn" class="btn btn-primary">Post carpool</button>
+            <p id="carpoolMessage" class="form-message"></p>
+          </article>
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow">MATCHES</span><h2>Nearby commute matches</h2></div></div><div id="carpoolList" class="saved-list"><div class="empty-state">No carpool posts yet.</div></div></article>
+        </div>
+      </section>
+
+      <section id="section-settings" class="page-section" data-tour="settings">
+        <div class="settings-tutorial-card">
+          <div><span class="eyebrow">HELP</span><strong>Want a quick tour?</strong><p>See what each CommuteIT section does and how to use it.</p></div>
+          <button id="settingsStartTutorial" class="btn btn-primary" type="button">Start Tutorial</button>
+        </div>
+        <div class="section-heading settings-content"><div><span class="eyebrow">PREFERENCES</span><h1>Settings</h1><p>Customize your local CommuteIT experience.</p></div></div>
+        <article class="panel settings-panel settings-content">
+          <div class="settings-theme-block" data-tour="dark-mode">
+            <div><span class="eyebrow">APPEARANCE</span><h2>Dark mode</h2><p>Use a darker interface for the CommuteIT dashboard, planner, reports, community, and settings.</p></div>
+            <label class="theme-toggle" aria-label="Toggle dark mode"><span class="theme-toggle-track"><input id="darkModeSetting" type="checkbox"><span class="theme-toggle-knob"></span></span><span id="darkModeLabel">Off</span></label>
+          </div>
+          <div class="settings-name-block registered-only-setting">
+            <div><span class="eyebrow">PROFILE</span><h2>Change your name</h2><p>Update the name shown on your dashboard and account header.</p></div>
+            <div class="settings-name-form">
+              <label>First name<input id="settingsFirstName" type="text" autocomplete="given-name" placeholder="Enter your first name"></label>
+              <label>Last name<input id="settingsLastName" type="text" autocomplete="family-name" placeholder="Enter your last name"></label>
+              <button id="saveNameBtn" class="btn btn-primary">Save name</button>
+              <p id="nameSettingsMessage" class="form-message"></p>
+            </div>
+          </div>
+          <label class="setting-row"><span><strong>Remember me</strong><small>Keep this session signed in on this device.</small></span><input id="rememberSetting" type="checkbox"></label>
+          <div class="settings-actions settings-actions-stack"><button id="clearLocalData" class="btn btn-danger-outline">Clear local demo data</button></div>
+        </article>
+      </section>
+
+      <section id="section-about" class="page-section" data-tour="about">
+        <div class="section-heading about-content"><div><span class="eyebrow">ABOUT COMMUTEIT</span><h1>Built for smarter, greener trips.</h1><p>CommuteIT brings route planning, live navigation, travel comparisons, and sustainability insights together for Metro Manila commuters.</p></div></div>
+        <article class="panel about-panel about-content">
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Live navigation</h2><p>Track your journey with GPS and follow your recommended route.</p></div></div>
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Multi-modal planning</h2><p>Compare MRT, LRT, bus, jeepney, and other travel choices.</p></div></div>
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Eco-Score</h2><p>See estimated CO₂ savings and sustainability performance per trip.</p></div></div>
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Travel reports</h2><p>Review your trip history and environmental impact over time.</p></div></div>
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Create your account</h2><p>Set up your commuter profile and keep your preferences available for your own experience.</p></div></div>
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Choose a route</h2><p>Compare travel time, fare, and Eco-Score before you travel.</p></div></div>
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Start navigation</h2><p>Use the interactive map and live GPS tracking while commuting.</p></div></div>
+          <div class="about-detail"><span class="about-detail-bullet" aria-hidden="true">•</span><div><h2>Review your impact</h2><p>Your completed trips update your dashboard and sustainability information.</p></div></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div id="tutorialConfirmModal" class="tutorial-confirm-modal hidden" aria-hidden="true">
+    <div class="tutorial-confirm-dim"></div>
+    <section class="tutorial-confirm-card" role="dialog" aria-modal="true" aria-labelledby="tutorialConfirmTitle">
+      <button id="tutorialConfirmClose" class="tutorial-confirm-close" type="button" aria-label="Close">×</button>
+      <span class="eyebrow">COMMUTEIT TUTORIAL</span>
+      <h2 id="tutorialConfirmTitle">Start a guided tutorial?</h2>
+      <p>We’ll walk you through the main CommuteIT features step by step. You can close the tutorial anytime.</p>
+      <div class="tutorial-confirm-actions">
+        <button id="tutorialConfirmNo" class="btn btn-ghost" type="button">Not now</button>
+        <button id="tutorialConfirmYes" class="btn btn-primary" type="button">Start Tutorial</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="tutorialOverlay" class="tutorial-overlay hidden" aria-hidden="true">
+    <div class="tutorial-dim"></div>
+    <div id="tutorialSpotlight" class="tutorial-spotlight"></div>
+    <section id="tutorialCard" class="tutorial-card" role="dialog" aria-modal="true" aria-labelledby="tutorialTitle">
+      <div class="tutorial-progress"><span id="tutorialStepLabel">Step 1 of 11</span><button id="tutorialClose" type="button" class="tutorial-close" aria-label="Close tutorial">×</button></div>
+      <span id="tutorialEyebrow" class="eyebrow">COMMUTEIT TOUR</span>
+      <h2 id="tutorialTitle">Dashboard</h2>
+      <p id="tutorialText"></p>
+      <div class="tutorial-actions"><button id="tutorialBack" class="btn btn-ghost" type="button">Back</button><button id="tutorialNext" class="btn btn-primary" type="button">Next</button></div>
+    </section>
+  </div>
+
+  <div id="hazardAlert" class="hazard-alert hidden" role="alert" aria-live="assertive">
+    <div class="hazard-alert-icon" id="hazardAlertIcon">⚠</div>
+    <div class="hazard-alert-body">
+      <strong id="hazardAlertTitle">Live hazard alert</strong>
+      <p id="hazardAlertText">Current weather conditions may affect travel.</p>
+      <small id="hazardAlertTime">Updating live</small>
+      <a href="https://www.pagasa.dost.gov.ph/" target="_blank" rel="noopener">Check PAGASA advisories</a>
+    </div>
+    <button id="hazardAlertClose" class="hazard-alert-close" type="button" aria-label="Dismiss hazard alert">×</button>
+  </div>
+
+  <script src="js/config.js?v=78"></script>
+  <script src="js/preferences.js?v=78"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js?v=78"></script>
+  <script src="js/site-info.js?v=78"></script>
+  <script src="js/app.js?v=78"></script>
+  <script src="js/tutorial.js?v=78"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhAf-byynXkviz9DtZMeUybItJycaXjGo&libraries=places&callback=initMap"></script>
+  <script src="js/mobile-controls.js?v=78"></script>
+
+<script>
+(()=>{
+  document.addEventListener("wheel",e=>{if(e.ctrlKey)e.preventDefault()},{passive:false});
+  document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&["+","-","=","0"].includes(e.key))e.preventDefault();});
+  document.addEventListener("gesturestart",e=>e.preventDefault(),{passive:false});
+  document.addEventListener("gesturechange",e=>e.preventDefault(),{passive:false});
+  document.addEventListener("gestureend",e=>e.preventDefault(),{passive:false});
+})();
+</script>
+</body>
+</html>

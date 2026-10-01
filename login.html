@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html lang="en" class="auth-document">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>Sign in — CommuteIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=82">
+  <link rel="icon" type="image/png" href="assets/commuteit-logo.svg">
+  <link rel="stylesheet" href="css/mobile-v51-fix.css">
+  <link rel="stylesheet" href="css/tutorial.css?v=82">
+</head>
+<body class="landing-page auth-page">
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="neon-lines neon-highway" aria-hidden="true">
+      <svg class="neon-highway-svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="highwayNeon81" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#39ffd2" stop-opacity="0.55"/>
+            <stop offset="48%" stop-color="#39ffd2" stop-opacity="1"/>
+            <stop offset="78%" stop-color="#66e7ff" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#b9fff3" stop-opacity="0.62"/>
+          </linearGradient>
+        </defs>
+        <path class="highway-road-glow" d="M -100 690 C 250 555, 500 735, 800 545 S 1260 300, 1700 405"/>
+        <path class="highway-road" d="M -100 690 C 250 555, 500 735, 800 545 S 1260 300, 1700 405"/>
+        <path class="highway-edge highway-edge-top" d="M -100 650 C 250 515, 500 695, 800 505 S 1260 260, 1700 365"/>
+        <path class="highway-edge highway-edge-bottom" d="M -100 730 C 250 595, 500 775, 800 585 S 1260 340, 1700 445"/>
+        <path class="highway-center" d="M -100 690 C 250 555, 500 735, 800 545 S 1260 300, 1700 405"/>
+      </svg>
+    </div>
+
+    <header class="public-nav">
+      <a class="brand brand-light" href="index.html"><img class="brand-logo" src="assets/commuteit-logo.svg" alt="CommuteIT logo"><span>CommuteIT</span></a>
+      <div class="public-nav-actions">
+        <button id="landingInfoBtn" class="btn btn-glass tutorial-start-btn" type="button" aria-label="Start Tutorial">Start Tutorial</button>
+        <div id="siteInfo" class="site-info site-info-light" aria-label="Manila time and weather">
+          <button type="button" id="clockToggle" class="site-clock" title="Switch time format" aria-label="Switch time format">--:--:--</button>
+          <button type="button" id="tempToggle" class="site-weather" title="Switch temperature unit" aria-label="Switch temperature unit"><span id="weatherIcon" class="weather-icon" aria-hidden="true">☀</span><span id="weatherText">Weather</span><span id="weatherTemp">--°C</span></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="auth-shell">
+      <section class="auth-card">
+        <div class="auth-heading">
+          <span class="eyebrow">WELCOME BACK</span>
+          <h1>Sign in to CommuteIT</h1>
+          <p>Continue your journey toward smarter, greener commuting.</p>
+        </div>
+
+        <form id="loginForm" class="form-stack">
+          <label>Email
+            <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label>Password
+            <span class="password-field">
+              <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+              <button class="password-toggle" type="button" data-password-toggle="loginPassword" aria-label="Show password">Show</button>
+            </span>
+          </label>
+          <div class="form-row">
+            <label class="check-label"><input type="checkbox" id="rememberMe"> <span>Remember me</span></label>
+            <span class="form-hint">Demo uses a fresh temporary Supabase account</span>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+          <div id="loginMessage" class="form-message" aria-live="polite"></div>
+        </form>
+
+        <div class="divider"><span>or</span></div>
+        <button id="demoLogin" class="btn btn-soft btn-block" type="button">Use demo account</button>
+
+        <p class="auth-footer">Don't have an account? <a href="signup.html">Create one</a></p>
+      </section>
+    </main>
+  </section>
+
+  <script src="js/site-info.js?v=82"></script>
+  <script src="js/preferences.js?v=82"></script>
+  <script src="js/config.js?v=78"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js?v=78"></script>
+  <script src="js/auth.js?v=78"></script>
+  <script src="js/mobile-controls.js?v=78"></script>
+
+<script>
+(()=>{
+  document.addEventListener("wheel",e=>{if(e.ctrlKey)e.preventDefault()},{passive:false});
+  document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&["+","-","=","0"].includes(e.key))e.preventDefault();});
+  document.addEventListener("gesturestart",e=>e.preventDefault(),{passive:false});
+  document.addEventListener("gesturechange",e=>e.preventDefault(),{passive:false});
+  document.addEventListener("gestureend",e=>e.preventDefault(),{passive:false});
+})();
+</script>
+</body>
+</html>

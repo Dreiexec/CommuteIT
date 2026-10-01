@@ -1,0 +1,425 @@
+
+/* Version 53: onboarding and tutorial */
+.welcome-card{position:absolute;z-index:8;right:7vw;top:50%;transform:translateY(-50%);width:min(500px,92vw);padding:34px;border:1px solid rgba(255,255,255,.4);border-radius:28px;background:rgba(7,34,30,.78);backdrop-filter:blur(20px);box-shadow:0 25px 80px rgba(0,0,0,.28);color:#fff}.welcome-card h2{font-size:clamp(30px,4vw,46px);line-height:1.05;margin:8px 0 12px}.welcome-card p{font-size:16px;line-height:1.6;color:rgba(255,255,255,.84);margin:0 0 24px}.welcome-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tutorial-info-btn{width:38px;height:38px;border-radius:50%;border:1px solid currentColor;background:rgba(255,255,255,.14);color:inherit;font-size:20px;font-weight:700;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.12)}.tutorial-info-btn.hidden{display:none!important}.landing-page .public-nav-actions{display:flex;align-items:center;gap:10px}.settings-tutorial-card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;margin-bottom:18px;border:1px solid #dce9e5;border-radius:18px;background:linear-gradient(135deg,#f5fbf8,#eef7f3)}.settings-tutorial-card strong{display:block;font-size:17px}.settings-tutorial-card p{margin:3px 0 0;color:#66756f;font-size:12px}.location-status{font-size:10px;color:#5e6e68;max-width:180px}.tutorial-overlay{position:fixed;inset:0;z-index:9999}.tutorial-dim{position:absolute;inset:0;background:rgba(4,19,16,.58);backdrop-filter:blur(2px)}.tutorial-spotlight{position:fixed;border:2px solid #76c893;border-radius:16px;box-shadow:0 0 0 9999px rgba(4,19,16,.58),0 0 0 5px rgba(118,200,147,.22);pointer-events:none;transition:.25s ease}.tutorial-card{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);width:min(560px,calc(100vw - 28px));padding:22px 24px;border:1px solid #dbe8e4;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(0,0,0,.28);color:#17332b}.tutorial-progress{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#73817c;margin-bottom:8px}.tutorial-close{border:0;background:transparent;font-size:24px;color:#6b7974;cursor:pointer}.tutorial-card h2{font-size:27px;margin:4px 0 8px}.tutorial-card p{font-size:14px;line-height:1.55;color:#60706a;margin:0 0 16px}.tutorial-actions{display:flex;justify-content:flex-end;gap:8px}.tutorial-highlight{position:relative!important;z-index:10001!important}.tutorial-highlight>*{position:relative;z-index:10002}@media(max-width:700px){.welcome-card{position:relative;right:auto;top:auto;transform:none;margin:0 auto;width:100%;padding:25px}.hero-content{align-items:center!important}.hero-copy{display:none}.welcome-actions{grid-template-columns:1fr}.tutorial-card{bottom:12px;padding:18px}.tutorial-card h2{font-size:23px}.location-status{display:none}}
+
+/* Version 54: centered welcome card + refined help icon */
+.welcome-card{
+  position:absolute;
+  z-index:8;
+  left:50%;
+  top:50%;
+  right:auto;
+  transform:translate(-50%,-50%);
+  width:min(560px,calc(100vw - 36px));
+  padding:36px;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:30px;
+  background:rgba(8,35,31,.56);
+  backdrop-filter:blur(30px) saturate(140%);
+  -webkit-backdrop-filter:blur(30px) saturate(140%);
+  box-shadow:0 30px 90px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.12);
+  color:#fff;
+}
+.welcome-card h2{font-size:clamp(30px,4vw,46px);line-height:1.05;margin:8px 0 12px;letter-spacing:-.035em}
+.welcome-card p{font-size:16px;line-height:1.6;color:rgba(255,255,255,.86);margin:0 0 24px}
+.tutorial-info-btn{
+  width:40px;height:40px;border-radius:50%;border:1px solid rgba(0,134,106,.28);
+  background:rgba(255,255,255,.72);color:var(--green-dark);font-size:18px;font-weight:700;
+  display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+}
+.tutorial-info-btn:hover{transform:translateY(-1px);background:#fff;box-shadow:0 12px 26px rgba(0,0,0,.13)}
+.tutorial-info-btn span{display:grid;place-items:center;width:21px;height:21px;border:1.5px solid currentColor;border-radius:50%;font-size:13px;line-height:1}
+@media(max-width:700px){
+  .welcome-card{position:relative;left:auto;top:auto;right:auto;transform:none;margin:auto;width:min(560px,100%);padding:25px}
+}
+
+
+/* Version 58: guided tutorial hint + custom confirmation card */
+.tutorial-hint-bubble{position:absolute;top:72px;right:5vw;z-index:20;width:min(290px,calc(100vw - 32px));padding:15px 40px 15px 17px;border:1px solid rgba(255,255,255,.72);border-radius:18px;background:rgba(255,255,255,.94);color:#17332b;box-shadow:0 18px 45px rgba(0,0,0,.18);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:grid;gap:3px;opacity:0;visibility:hidden;transform:translateY(-7px) scale(.98);pointer-events:none;transition:opacity .25s ease,transform .25s ease,visibility .25s ease}
+.tutorial-hint-bubble.show{opacity:1;visibility:visible;transform:translateY(0) scale(1);pointer-events:auto}
+.tutorial-hint-bubble.fade-out{opacity:0;transform:translateY(-4px) scale(.98);pointer-events:none}
+.tutorial-hint-bubble strong{font-size:14px;line-height:1.2}.tutorial-hint-bubble>span:not(.tutorial-hint-arrow){font-size:12px;line-height:1.4;color:#62736d}
+.tutorial-hint-close{position:absolute;right:8px;top:7px;width:28px;height:28px;border:0;border-radius:50%;background:transparent;color:#61716c;font-size:20px;line-height:1;cursor:pointer}.tutorial-hint-close:hover{background:#edf5f2;color:#17332b}
+.tutorial-hint-arrow{position:absolute;right:18px;top:-7px;width:14px;height:14px;background:rgba(255,255,255,.94);border-left:1px solid rgba(255,255,255,.72);border-top:1px solid rgba(255,255,255,.72);transform:rotate(45deg)}
+.tutorial-confirm-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:22px}.tutorial-confirm-modal.hidden{display:none!important}.tutorial-confirm-dim{position:absolute;inset:0;background:rgba(5,24,20,.42);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}.tutorial-confirm-card{position:relative;z-index:1;width:min(470px,100%);padding:30px;border:1px solid rgba(255,255,255,.75);border-radius:26px;background:rgba(255,255,255,.96);box-shadow:0 30px 90px rgba(0,0,0,.28)}.tutorial-confirm-card h2{font-size:29px;line-height:1.08;margin:6px 34px 10px 0;letter-spacing:-.03em}.tutorial-confirm-card p{font-size:14px;line-height:1.55;margin:0 0 22px;color:#62736d}.tutorial-confirm-close{position:absolute;right:15px;top:14px;width:34px;height:34px;border:0;border-radius:50%;background:#eef5f2;color:#5d6e68;font-size:22px;cursor:pointer}.tutorial-confirm-close:hover{background:#e2eee9}.tutorial-confirm-actions{display:flex;justify-content:flex-end;gap:9px}
+@media(max-width:700px){.tutorial-hint-bubble{top:72px;right:16px;width:min(285px,calc(100vw - 32px))}.tutorial-confirm-card{padding:25px 22px}.tutorial-confirm-actions{display:grid;grid-template-columns:1fr 1fr}.tutorial-confirm-actions .btn{width:100%}}
+
+/* Version 58: polished, persistent tutorial hint and smooth confirmation surfaces. */
+.landing-page .public-nav-actions{position:relative}
+.tutorial-help-wrap{position:relative;display:flex;align-items:center;flex:0 0 auto}
+.tutorial-hint-bubble{
+  position:absolute;top:calc(100% + 12px);right:0;z-index:30;
+  width:min(300px,calc(100vw - 28px));padding:16px 42px 16px 18px;
+  border:1px solid rgba(255,255,255,.82);border-radius:20px;
+  background:rgba(255,255,255,.96);color:#17332b;
+  box-shadow:0 22px 55px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.9);
+  backdrop-filter:blur(18px) saturate(130%);-webkit-backdrop-filter:blur(18px) saturate(130%);
+  display:grid;gap:4px;opacity:1;visibility:visible;transform:translateY(0) scale(1);
+  pointer-events:auto;transition:opacity .22s ease,transform .22s ease,visibility .22s ease;
+}
+.tutorial-hint-bubble:not(.show){opacity:0;visibility:hidden;transform:translateY(-5px) scale(.985);pointer-events:none}
+.tutorial-hint-bubble strong{font-size:14px;line-height:1.25;font-weight:700}
+.tutorial-hint-bubble>span:not(.tutorial-hint-arrow){font-size:12px;line-height:1.45;color:#62736d;font-weight:400}
+.tutorial-hint-close{position:absolute;right:8px;top:8px;width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:#61716c;font-size:19px;line-height:1;cursor:pointer;transition:background .18s ease,transform .18s ease}
+.tutorial-hint-close:hover{background:#edf5f2;color:#17332b;transform:scale(1.04)}
+.tutorial-hint-arrow{position:absolute;right:18px;top:-7px;width:14px;height:14px;background:rgba(255,255,255,.96);border-left:1px solid rgba(255,255,255,.82);border-top:1px solid rgba(255,255,255,.82);transform:rotate(45deg)}
+.tutorial-confirm-modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;opacity:1;transition:opacity .2s ease}
+.tutorial-confirm-modal.hidden{display:none!important}
+.tutorial-confirm-dim{position:absolute;inset:0;background:rgba(5,24,20,.44);backdrop-filter:blur(11px) saturate(105%);-webkit-backdrop-filter:blur(11px) saturate(105%)}
+.tutorial-confirm-card{position:relative;z-index:1;width:min(480px,100%);padding:31px;border:1px solid rgba(255,255,255,.78);border-radius:28px;background:rgba(255,255,255,.97);box-shadow:0 34px 100px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.95);animation:tutorialConfirmIn .24s cubic-bezier(.2,.8,.2,1)}
+.tutorial-confirm-card h2{font-size:clamp(26px,4vw,31px);line-height:1.08;margin:7px 38px 10px 0;letter-spacing:-.03em;font-weight:700}
+.tutorial-confirm-card p{font-size:14px;line-height:1.58;margin:0 0 22px;color:#62736d;font-weight:400}
+.tutorial-confirm-actions .btn{min-height:46px}
+@keyframes tutorialConfirmIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:700px){
+  .tutorial-help-wrap{position:relative}
+  .tutorial-hint-bubble{top:calc(100% + 10px);right:-4px;width:min(290px,calc(100vw - 28px));padding:15px 42px 15px 16px;border-radius:18px}
+  .tutorial-confirm-modal{padding:14px}
+  .tutorial-confirm-card{width:min(100%,430px);padding:24px 20px;border-radius:24px}
+  .tutorial-confirm-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .tutorial-confirm-actions .btn{width:100%;min-width:0}
+}
+@media(max-width:430px){
+  .tutorial-hint-bubble{right:-2px;width:calc(100vw - 26px)}
+  .tutorial-confirm-actions{grid-template-columns:1fr}
+}
+
+/* Version 60: tutorial bubble is anchored to the actual help button. */
+.landing-page .tutorial-help-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  min-width: 38px !important;
+}
+.landing-page .tutorial-hint-bubble {
+  position: absolute !important;
+  top: calc(100% + 12px) !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: min(320px, calc(100vw - 28px)) !important;
+  max-width: calc(100vw - 28px) !important;
+  z-index: 100 !important;
+}
+.landing-page .tutorial-hint-bubble:not(.show) {
+  transform: translateX(-50%) translateY(-5px) scale(.985) !important;
+}
+.landing-page .tutorial-hint-arrow {
+  left: 50% !important;
+  right: auto !important;
+  top: -7px !important;
+  transform: translateX(-50%) rotate(45deg) !important;
+}
+
+@media (max-width: 700px) {
+  .landing-page .tutorial-help-wrap {
+    position: relative !important;
+  }
+  .landing-page .tutorial-hint-bubble {
+    top: calc(100% + 12px) !important;
+    left: 50% !important;
+    right: auto !important;
+    width: min(300px, calc(100vw - 22px)) !important;
+    max-width: calc(100vw - 22px) !important;
+    padding: 16px 42px 16px 17px !important;
+  }
+  .landing-page .tutorial-hint-arrow {
+    left: 50% !important;
+    right: auto !important;
+  }
+}
+
+/* Prevent the tutorial hint from changing layout or causing horizontal overflow. */
+.landing-page .tutorial-hint-bubble,
+.landing-page .tutorial-help-wrap,
+.landing-page .public-nav,
+.landing-page .public-nav-actions {
+  box-sizing: border-box !important;
+}
+
+
+/* Version 63: welcome actions are direct; tutorial confirmation is reserved for the help button. */
+.landing-page .tutorial-confirm-modal {
+  z-index: 2147483647 !important;
+  isolation: isolate;
+}
+.landing-page .tutorial-confirm-modal.hidden {
+  display: none !important;
+}
+.landing-page .tutorial-confirm-dim {
+  z-index: 0 !important;
+  pointer-events: auto;
+}
+.landing-page .tutorial-confirm-card {
+  z-index: 2 !important;
+  pointer-events: auto !important;
+}
+.landing-page .tutorial-confirm-card button {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+/* When the confirmation is open, it must sit above the first-visit welcome gate. */
+body.tutorial-confirm-open .landing-welcome-gate {
+  pointer-events: none !important;
+}
+body.tutorial-confirm-open .tutorial-confirm-modal {
+  pointer-events: auto !important;
+}
+/* Do not let the gate's global animation-freeze rule affect the confirmation's button interactions. */
+body.tutorial-confirm-open .tutorial-confirm-card,
+body.tutorial-confirm-open .tutorial-confirm-card * {
+  pointer-events: auto !important;
+}
+
+/* Version 70 — complete dark-mode treatment for settings help and tutorial surfaces. */
+html.dark-mode .app-page .settings-tutorial-card,
+body.dark-mode.app-page .settings-tutorial-card{
+  background:#17211f !important;
+  border-color:#2b3b36 !important;
+  color:#edf5f2 !important;
+  box-shadow:none !important;
+}
+html.dark-mode .app-page .settings-tutorial-card strong,
+body.dark-mode.app-page .settings-tutorial-card strong{color:#f1f7f5 !important;}
+html.dark-mode .app-page .settings-tutorial-card p,
+body.dark-mode.app-page .settings-tutorial-card p{color:#9db0aa !important;}
+html.dark-mode .app-page .settings-tutorial-card .eyebrow,
+body.dark-mode.app-page .settings-tutorial-card .eyebrow{color:#69d7b2 !important;}
+
+/* The guided tutorial itself should also follow the selected dashboard theme. */
+html.dark-mode .tutorial-card,
+body.dark-mode.app-page .tutorial-card{
+  background:#17211f !important;
+  border-color:#2b3b36 !important;
+  color:#edf5f2 !important;
+  box-shadow:0 24px 70px rgba(0,0,0,.42) !important;
+}
+html.dark-mode .tutorial-card h2,
+body.dark-mode.app-page .tutorial-card h2{color:#f1f7f5 !important;}
+html.dark-mode .tutorial-card p,
+body.dark-mode.app-page .tutorial-card p{color:#9db0aa !important;}
+html.dark-mode .tutorial-card .tutorial-progress,
+body.dark-mode.app-page .tutorial-card .tutorial-progress{color:#8ea59f !important;}
+html.dark-mode .tutorial-card .tutorial-close,
+body.dark-mode.app-page .tutorial-card .tutorial-close{color:#b9cbc5 !important;}
+
+
+/* Version 75 — guided tutorial focuses on the actual tile instead of blurring/dimming the page. */
+.tutorial-overlay{position:fixed;inset:0;z-index:9999;pointer-events:none;background:transparent!important;}
+.tutorial-dim{display:none!important;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.tutorial-spotlight{
+  position:fixed;
+  display:none;
+  border:2px solid #00866a;
+  border-radius:18px;
+  box-shadow:0 0 0 4px rgba(0,134,106,.14),0 10px 32px rgba(0,134,106,.12);
+  background:transparent!important;
+  pointer-events:none;
+  z-index:10000;
+  transition:left .25s ease,top .25s ease,width .25s ease,height .25s ease;
+}
+.tutorial-highlight{
+  position:relative!important;
+  z-index:10001!important;
+  scroll-margin-top:90px;
+}
+.tutorial-highlight>*{position:relative;z-index:10002;}
+.tutorial-card{
+  position:fixed;
+  z-index:10003;
+  width:min(520px,calc(100vw - 28px));
+  max-height:min(42vh,330px);
+  overflow:auto;
+  pointer-events:auto;
+  bottom:auto;
+  left:12px;
+  top:12px;
+  transform:none;
+  box-shadow:0 22px 60px rgba(0,0,0,.20),0 0 0 1px rgba(0,134,106,.08);
+}
+@media(max-width:700px){
+  .tutorial-card{width:min(420px,calc(100vw - 24px));max-height:44vh;padding:18px 19px;}
+  .tutorial-spotlight{border-radius:14px;}
+}
+
+/* Version 76 — tutorial close button is always anchored to the upper-right corner. */
+.tutorial-confirm-card{position:relative !important;}
+.tutorial-confirm-close{
+  position:absolute !important;
+  top:14px !important;
+  right:14px !important;
+  left:auto !important;
+  bottom:auto !important;
+  margin:0 !important;
+  z-index:5 !important;
+  display:grid !important;
+  place-items:center !important;
+}
+.tutorial-card .tutorial-close{
+  position:relative !important;
+  margin-left:auto !important;
+  flex:0 0 auto !important;
+}
+
+/* Version 76 — remove any accidental light-mode surfaces from tutorial UI in dark mode. */
+html.dark-mode .tutorial-confirm-card,
+body.dark-mode.app-page .tutorial-confirm-card{
+  background:#17211f !important;
+  color:#edf5f2 !important;
+  border-color:#2b3b36 !important;
+}
+html.dark-mode .tutorial-confirm-card h2,
+body.dark-mode.app-page .tutorial-confirm-card h2{color:#f1f7f5 !important;}
+html.dark-mode .tutorial-confirm-card p,
+body.dark-mode.app-page .tutorial-confirm-card p{color:#9db0aa !important;}
+html.dark-mode .tutorial-confirm-close,
+body.dark-mode.app-page .tutorial-confirm-close{
+  background:#21302c !important;
+  color:#b9cbc5 !important;
+}
+html.dark-mode .tutorial-confirm-close:hover,
+body.dark-mode.app-page .tutorial-confirm-close:hover{background:#29403a !important;color:#edf5f2 !important;}
+
+
+/* Version 77 — requested tutorial presentation and controls. */
+/* Restore the blurred tutorial presentation while keeping the taught tile above the dim layer. */
+.tutorial-overlay{
+  position:fixed!important;inset:0!important;z-index:9999!important;
+  pointer-events:none!important;background:transparent!important;
+}
+.tutorial-dim{
+  display:block!important;position:absolute!important;inset:0!important;
+  background:rgba(4,19,16,.52)!important;
+  backdrop-filter:blur(6px)!important;
+  -webkit-backdrop-filter:blur(6px)!important;
+  pointer-events:none!important;
+}
+.tutorial-spotlight{
+  display:block!important;pointer-events:none!important;
+  border:2px solid #00866a!important;
+  box-shadow:0 0 0 9999px rgba(4,19,16,.52),0 0 0 5px rgba(0,134,106,.18),0 10px 32px rgba(0,134,106,.14)!important;
+  background:transparent!important;
+}
+.tutorial-highlight{position:relative!important;z-index:10001!important;filter:none!important;}
+.tutorial-highlight>*{position:relative;z-index:10002!important;}
+
+/* Settings information stays in one non-scrollable tutorial card. */
+.tutorial-card{max-height:none!important;overflow:visible!important;}
+@media(max-width:700px){.tutorial-card{max-height:none!important;overflow:visible!important;}}
+
+/* Explicit Start Tutorial buttons replace the old ? controls and hint bubble. */
+.tutorial-start-btn{white-space:nowrap!important;min-width:max-content!important;font-weight:700!important;}
+
+/* Slightly faster subtle landing background motion. */
+body.landing-page .hero::before{
+  animation:commuteitLandingDrift 10s ease-in-out infinite alternate!important;
+}
+
+/* Landing credits: no white box, slightly larger text with shadow. */
+body.landing-page .landing-footer{
+  background:transparent!important;
+  background-image:none!important;
+  border-top:0!important;
+  box-shadow:none!important;
+}
+body.landing-page .landing-footer-inner{
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.landing-page .landing-footer-inner span{
+  font-size:13px!important;
+  font-weight:600!important;
+  color:rgba(255,255,255,.92)!important;
+  text-shadow:0 2px 10px rgba(0,0,0,.55)!important;
+}
+
+/* Version 79 — always-visible thin neon lines with a gentle breathing glow. */
+body.landing-page .neon-lines{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:0 !important;
+  pointer-events:none !important;
+  overflow:hidden !important;
+}
+body.landing-page .neon-line{
+  position:absolute !important;
+  display:block !important;
+  height:2px !important;
+  width:72% !important;
+  min-width:520px !important;
+  border-radius:999px !important;
+  opacity:.76 !important;
+  filter:brightness(.98) !important;
+  animation:commuteitNeonBreath79 3.8s ease-in-out infinite !important;
+  will-change:opacity,filter,box-shadow !important;
+  background:linear-gradient(90deg,rgba(55,255,211,.08) 0%,rgba(55,255,211,.92) 22%,rgba(106,231,255,.98) 68%,rgba(255,255,255,.18) 100%) !important;
+  box-shadow:0 0 4px rgba(67,255,214,.72),0 0 12px rgba(67,255,214,.46),0 0 25px rgba(73,188,255,.24) !important;
+}
+body.landing-page .neon-left{left:-10% !important;transform-origin:left center !important;}
+body.landing-page .neon-left-1{top:57% !important;transform:rotate(17deg) !important;animation-delay:-.2s !important;}
+body.landing-page .neon-left-2{top:69% !important;transform:rotate(11deg) !important;animation-delay:-1.45s !important;}
+body.landing-page .neon-left-3{top:81% !important;transform:rotate(5deg) !important;animation-delay:-2.7s !important;}
+body.landing-page .neon-right{right:-10% !important;transform-origin:right center !important;background:linear-gradient(270deg,rgba(55,255,211,.08) 0%,rgba(55,255,211,.92) 22%,rgba(106,231,255,.98) 68%,rgba(255,255,255,.18) 100%) !important;}
+body.landing-page .neon-right-1{top:11% !important;transform:rotate(-17deg) !important;animation-delay:-.8s !important;}
+body.landing-page .neon-right-2{top:23% !important;transform:rotate(-11deg) !important;animation-delay:-2.05s !important;}
+body.landing-page .neon-right-3{top:35% !important;transform:rotate(-5deg) !important;animation-delay:-3.25s !important;}
+@keyframes commuteitNeonBreath79{
+  0%,100%{opacity:.72;filter:brightness(.94);box-shadow:0 0 4px rgba(67,255,214,.64),0 0 11px rgba(67,255,214,.40),0 0 22px rgba(73,188,255,.20)}
+  50%{opacity:1;filter:brightness(1.24);box-shadow:0 0 5px rgba(67,255,214,.90),0 0 16px rgba(67,255,214,.62),0 0 34px rgba(73,188,255,.34)}
+}
+
+/* Version 79 — credits float directly over the landing hero; no white strip. */
+body.landing-page main{position:relative !important;min-height:100dvh !important;background:transparent !important;}
+body.landing-page .hero{height:100dvh !important;min-height:100dvh !important;}
+body.landing-page .landing-footer{
+  position:fixed !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  z-index:50 !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:12px 20px 14px !important;
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+  pointer-events:none !important;
+}
+body.landing-page .landing-footer-inner,
+body.landing-page .landing-footer-inner span{
+  background:transparent !important;
+  background-color:transparent !important;
+  background-image:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+body.landing-page .landing-footer-inner span{
+  display:inline !important;
+  font-size:13px !important;
+  line-height:1.4 !important;
+  font-weight:600 !important;
+  color:rgba(255,255,255,.92) !important;
+  text-shadow:0 2px 10px rgba(0,0,0,.62),0 0 8px rgba(64,255,211,.12) !important;
+}
+@media(max-width:600px){
+  body.landing-page .landing-footer{padding:10px 14px 12px !important;}
+  body.landing-page .landing-footer-inner span{font-size:12px !important;}
+  body.landing-page .neon-line{min-width:420px !important;width:88% !important;height:2px !important;}
+}
+
+
+/* Version 80 final overrides. */
+body.landing-page .neon-lines{position:absolute!important;inset:0!important;z-index:0!important;}
+body.landing-page .neon-line{display:none!important;}
+body.landing-page .neon-curves{display:block!important;}
+body.landing-page .landing-footer,
+body.landing-page .landing-footer-inner,
+body.landing-page .landing-footer-inner span{background:transparent!important;background-color:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;}
+body.landing-page .landing-footer-inner span{font-size:11px!important;}
+@media(max-width:600px){body.landing-page .landing-footer-inner span{font-size:10px!important;}}

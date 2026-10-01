@@ -1,0 +1,364 @@
+/* Version 53: definitive mobile layout pass + Landing/Auth fix. */
+
+/* --- Base Mobile Reset --- */
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+/* ==========================================================================
+   1. LANDING & AUTH PAGE SPECIFIC FIXES (Index, Login, Signup)
+   ========================================================================== */
+
+/* Public Navigation Controls */
+.public-nav {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.public-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Guarantee "Start Tutorial" button is always visible */
+.tutorial-start-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  white-space: nowrap;
+}
+
+/* LANDING/AUTH PORTRAIT: Lock screen, NO page scrolling */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  html:has(.hero), 
+  body:has(.hero),
+  body.landing-page, 
+  body.auth-page {
+    height: 100% !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+  }
+
+  .hero {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: env(safe-area-inset-top, 12px);
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    box-sizing: border-box;
+  }
+
+  .public-nav {
+    padding: 12px 16px;
+  }
+
+  .tutorial-start-btn {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
+
+  .site-info {
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  /* Center hero and login cards in viewport without body overflow */
+  .auth-shell,
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 400px;
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto; /* Internal card scrolling if mobile form is long */
+  }
+}
+
+/* LANDING/AUTH LANDSCAPE: Allow vertical scroll to prevent overlapping */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  html:has(.hero), 
+  body:has(.hero),
+  body.landing-page, 
+  body.auth-page {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+  }
+
+  .hero {
+    min-height: 100vh;
+    height: auto !important;
+    padding-top: 16px;
+    padding-bottom: 32px;
+    box-sizing: border-box;
+  }
+
+  .public-nav {
+    position: relative;
+    padding: 8px 16px;
+  }
+
+  .auth-shell,
+  .hero-content {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .auth-card {
+    margin: 10px auto;
+  }
+}
+
+/* ==========================================================================
+   2. APP DASHBOARD & MAIN INTERFACE FIXES
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  html, body { overflow-x: hidden !important; }
+  .app-page { min-height: 100svh !important; height: auto !important; overflow: visible !important; }
+  .app-main { height: auto !important; min-height: 100svh !important; overflow: visible !important; }
+  .app-content,
+  .dashboard-view .app-content {
+    height: auto !important;
+    min-height: calc(100svh - 62px) !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    display: block !important;
+    align-items: initial !important;
+    justify-content: initial !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: auto;
+  }
+  .page-section { height: auto !important; min-height: 0 !important; overflow: visible !important; }
+}
+
+@media (max-width: 600px) {
+  /* Never use the desktop "fit everything" dashboard behavior on phones. */
+  .dashboard-view .app-content,
+  .dashboard-view #section-dashboard {
+    max-height: none !important;
+  }
+
+  .dashboard-view #section-dashboard .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+  }
+  .dashboard-view #section-dashboard .stat-card {
+    min-width: 0 !important;
+    padding: 16px !important;
+    border-radius: 16px !important;
+  }
+  .dashboard-view #section-dashboard .stat-card span,
+  .dashboard-view #section-dashboard .stat-card small {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+  .dashboard-view #section-dashboard .stat-card strong {
+    font-size: 27px !important;
+  }
+
+  /* True centered hamburger: use the real span and remove the button gloss overlay. */
+  .app-header > #openSidebar.icon-btn {
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: grid !important;
+    place-items: center !important;
+    flex: 0 0 46px !important;
+    width: 46px !important;
+    min-width: 46px !important;
+    max-width: 46px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    text-indent: 0 !important;
+  }
+  .app-header > #openSidebar.icon-btn::before,
+  .app-header > #openSidebar.icon-btn::after { display: none !important; content: none !important; }
+  .app-header > #openSidebar .hamburger-lines {
+    position: relative !important;
+    display: block !important;
+    width: 24px !important;
+    height: 18px !important;
+    margin: 0 !important;
+    flex: none !important;
+  }
+  .app-header > #openSidebar .hamburger-lines::before,
+  .app-header > #openSidebar .hamburger-lines::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    width: 24px !important;
+    height: 3px !important;
+    border-radius: 99px !important;
+    background: var(--green-dark) !important;
+  }
+  .app-header > #openSidebar .hamburger-lines::before { top: 0 !important; box-shadow: 0 7.5px 0 var(--green-dark), 0 15px 0 var(--green-dark) !important; }
+  .app-header > #openSidebar .hamburger-lines::after { display:none !important; }
+
+  /* Community: Departure and Seats are always separate full-width controls on phones. */
+  #section-community .community-grid .two-col,
+  #section-community .two-col {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+  #section-community .community-grid .two-col > label,
+  #section-community .two-col > label {
+    width: 100% !important;
+    min-width: 0 !important;
+    display: block !important;
+  }
+  #section-community #carpoolTime,
+  #section-community #carpoolSeats {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 52px !important;
+    height: 52px !important;
+  }
+
+  /* Sustainability: text first, then a dedicated visual row. Nothing overlaps. */
+  .dashboard-view #section-dashboard .sustainability-panel {
+    min-height: 365px !important;
+    height: auto !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .sustainability-head {
+    display: block !important;
+    min-height: 0 !important;
+    width: 100% !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .sustainability-head > div:first-child {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .impact-period {
+    display: block !important;
+    width: 100% !important;
+    max-width: 180px !important;
+    min-width: 150px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    margin: 14px 0 0 auto !important;
+    font-size: 15px !important;
+    padding: 8px 30px 8px 14px !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .impact-visual {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 145px !important;
+    min-height: 145px !important;
+    margin-top: 20px !important;
+    overflow: visible !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .tree-landscape {
+    position: absolute !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: 0 !important;
+    width: 64% !important;
+    max-width: 290px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    z-index: 1 !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .tree-landscape svg {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 120px !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .impact-ring {
+    position: absolute !important;
+    right: 8px !important;
+    left: auto !important;
+    top: 22px !important;
+    bottom: auto !important;
+    width: 92px !important;
+    height: 92px !important;
+    min-width: 92px !important;
+    min-height: 92px !important;
+    max-width: 92px !important;
+    max-height: 92px !important;
+    z-index: 3 !important;
+    display: grid !important;
+    place-items: center !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .impact-ring span {
+    font-size: 17px !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .impact-footer {
+    position: absolute !important;
+    right: 0 !important;
+    bottom: -2px !important;
+    width: 110px !important;
+    font-size: 10px !important;
+    z-index: 4 !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .tree-equivalent {
+    font-size: 28px !important;
+    line-height: 1.05 !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .impact-label {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+  .dashboard-view #section-dashboard .sustainability-panel .impact-live {
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  /* Landscape has little vertical space: keep the full page scrollable. */
+  .app-content,
+  .dashboard-view .app-content {
+    height: auto !important;
+    max-height: none !important;
+    min-height: calc(100svh - 58px) !important;
+    overflow-y: auto !important;
+    display: block !important;
+    padding-bottom: 40px !important;
+  }
+  .dashboard-view #section-dashboard {
+    max-height: none !important;
+    height: auto !important;
+  }
+  .auth-page, .auth-shell {
+    height: auto !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+  }
+}
