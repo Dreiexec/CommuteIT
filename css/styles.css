@@ -3901,3 +3901,95 @@ body.dark-mode.app-page #clearLocalData:hover {
   display: none !important;
   margin: 0 !important;
 }
+/* Version 93 — mobile fixes: working menu button, compact text-only drawer, no header title, uniform header buttons, tutorial confirm buttons. */
+
+/* Menu button must sit above the page content (landing, sign in, create account). */
+body.landing-page .public-nav { z-index: 50 !important; }
+body.landing-page .hero-content,
+body.landing-page .auth-shell { pointer-events: none; }
+body.landing-page .hero-content > *,
+body.landing-page .auth-shell > * { pointer-events: auto; }
+
+@media (max-width: 900px) {
+
+  /* ---- Header: no page title, same outline on Start Tutorial / clock / weather ---- */
+  body.app-page .app-header .header-title { display: none !important; }
+  body.app-page .app-header {
+    display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 10px !important;
+  }
+  body.app-page .app-header .header-actions {
+    display: flex !important; align-items: center !important; justify-content: flex-end !important;
+    flex-wrap: nowrap !important; gap: 8px !important; margin-left: auto !important; min-width: 0 !important;
+  }
+  body.app-page .app-header .tutorial-start-btn,
+  body.app-page .app-header .site-clock,
+  body.app-page .app-header .site-weather {
+    box-sizing: border-box !important; height: 44px !important; min-height: 44px !important;
+    padding: 0 12px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;
+    background: #fff !important; color: var(--green-dark) !important;
+    border: 1.5px solid #c3dcd2 !important; border-radius: 14px !important; box-shadow: none !important;
+    font-size: 13px !important; font-weight: 600 !important; line-height: 1 !important; white-space: nowrap !important;
+  }
+
+  /* ---- Drawer: compact, text only, sized to its content ---- */
+  body.app-page .sidebar {
+    left: 0 !important; right: auto !important;
+    width: max-content !important; min-width: 210px !important; max-width: 78vw !important;
+    padding: calc(14px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom)) !important;
+    gap: 6px !important;
+  }
+  body.app-page .sidebar .sidebar-top { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 14px !important; }
+  body.app-page .sidebar .brand { font-size: 17px !important; gap: 9px !important; }
+  body.app-page .sidebar .brand-logo { width: 40px !important; height: 40px !important; }
+  body.app-page .sidebar #closeSidebar { width: 34px !important; height: 34px !important; min-width: 34px !important; min-height: 34px !important; }
+  body.app-page .sidebar .profile-mini { padding: 9px 11px !important; gap: 10px !important; margin: 4px 0 6px !important; }
+  body.app-page .sidebar .profile-mini .avatar { width: 34px !important; height: 34px !important; min-width: 34px !important; font-size: 15px !important; }
+  body.app-page .sidebar .profile-mini strong { font-size: 14px !important; }
+  body.app-page .sidebar .profile-mini span { font-size: 12px !important; }
+  body.app-page .sidebar .side-nav,
+  body.app-page .sidebar .side-bottom { gap: 4px !important; }
+  body.app-page .sidebar .side-link {
+    padding: 11px 14px !important; font-size: 15px !important; min-height: 0 !important; justify-content: flex-start !important; white-space: nowrap !important;
+  }
+  /* no icons */
+  html body.app-page .sidebar .side-link > span { display: none !important; }
+  /* About lives in Settings on mobile */
+  body.app-page .sidebar .side-bottom [data-section="about"] { display: none !important; }
+
+  /* ---- "Start a guided tutorial?" card: Start on top, Not now below as a real button ---- */
+  .tutorial-confirm-actions { display: flex !important; flex-direction: column !important; gap: 10px !important; }
+  .tutorial-confirm-actions .btn { width: 100% !important; min-height: 52px !important; border-radius: 16px !important; justify-content: center !important; }
+  .tutorial-confirm-actions .btn-primary { order: 1 !important; }
+  .tutorial-confirm-actions .btn-ghost {
+    order: 2 !important; background: transparent !important; color: var(--green-dark) !important;
+    border: 1.5px solid #c3dcd2 !important; box-shadow: none !important;
+  }
+}
+
+/* Dark mode versions */
+@media (max-width: 900px) {
+  html.dark-mode body.app-page .app-header .tutorial-start-btn,
+  html.dark-mode body.app-page .app-header .site-clock,
+  html.dark-mode body.app-page .app-header .site-weather,
+  body.dark-mode.app-page .app-header .tutorial-start-btn,
+  body.dark-mode.app-page .app-header .site-clock,
+  body.dark-mode.app-page .app-header .site-weather {
+    background: #26372e !important; color: #dcece2 !important; border-color: #40584a !important;
+  }
+  html.dark-mode .tutorial-confirm-actions .btn-ghost,
+  body.dark-mode .tutorial-confirm-actions .btn-ghost {
+    background: transparent !important; color: #b5d9c2 !important; border-color: #40584a !important;
+  }
+}
+
+/* Menu panel on phones: Start Tutorial, clock and weather all visible with the same size and outline. */
+@media (max-width: 700px) {
+  body.landing-page .public-nav-actions .landing-options-panel .tutorial-start-btn,
+  body.landing-page .public-nav-actions .landing-options-panel .site-clock,
+  body.landing-page .public-nav-actions .landing-options-panel .site-weather {
+    display: inline-flex !important; align-items: center !important; justify-content: center !important;
+    box-sizing: border-box !important; width: 100% !important; max-width: none !important;
+    min-height: 44px !important; padding: 8px 12px !important; font-size: 13px !important; font-weight: 700 !important;
+    border: 1.5px solid rgba(255,255,255,.32) !important; border-radius: 14px !important;
+  }
+}
