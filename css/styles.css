@@ -3993,3 +3993,130 @@ body.landing-page .auth-shell > * { pointer-events: auto; }
     border: 1.5px solid rgba(255,255,255,.32) !important; border-radius: 14px !important;
   }
 }
+/* Version 94 — matching header buttons, proper "Change route type" button, dark-mode report/planner leftovers, sticky header + subheader on desktop. */
+
+/* ---- 1. Start Tutorial: same outline as the clock and weather buttons ---- */
+body.app-page .app-header .tutorial-start-btn {
+  box-shadow: none !important;
+  background: #fff !important;
+  border: 1px solid #d8e4e0 !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+}
+body.app-page .app-header .tutorial-start-btn::before,
+body.app-page .app-header .tutorial-start-btn::after { display: none !important; content: none !important; }
+@media (min-width: 901px) {
+  body.app-page .app-header .tutorial-start-btn { height: 40px !important; min-height: 40px !important; padding: 7px 11px !important; }
+}
+html.dark-mode body.app-page .app-header .tutorial-start-btn,
+body.dark-mode.app-page .app-header .tutorial-start-btn {
+  background: #26372e !important; border: 1px solid #40574b !important; color: #e5eee9 !important;
+}
+html.dark-mode body.app-page .app-header .tutorial-start-btn:hover,
+body.dark-mode.app-page .app-header .tutorial-start-btn:hover {
+  background: #344b3d !important; border-color: #69b99c !important;
+  box-shadow: 0 0 10px rgba(112,202,155,.24), 0 0 22px rgba(112,202,155,.12) !important;
+}
+
+/* ---- 2. "Change route type" button ---- */
+body.app-page .back-mode-btn {
+  display: inline-flex !important; align-items: center !important; gap: 6px !important;
+  height: 40px !important; padding: 0 16px !important;
+  border: 1px solid #d8e4e0 !important; border-radius: 12px !important;
+  background: #fff !important; color: var(--green-dark) !important;
+  font-size: 13px !important; font-weight: 600 !important; box-shadow: none !important;
+}
+html.dark-mode body.app-page .back-mode-btn,
+body.dark-mode.app-page .back-mode-btn {
+  background: #26372e !important; color: #dcece2 !important; border: 1px solid #40574b !important;
+}
+html.dark-mode body.app-page .back-mode-btn:hover,
+body.dark-mode.app-page .back-mode-btn:hover {
+  background: #344b3d !important; border-color: #69b99c !important; color: #f0fff6 !important;
+}
+
+/* ---- 3. Dark mode: leftover light surfaces in Reports and the planner ---- */
+html.dark-mode body.app-page .impact-report-grid > div,
+html.dark-mode body.app-page .planning-metrics > div,
+body.dark-mode.app-page .impact-report-grid > div,
+body.dark-mode.app-page .planning-metrics > div {
+  background: #131d18 !important; border: 1px solid #344940 !important; box-shadow: none !important; color: #e5eee9 !important;
+}
+html.dark-mode body.app-page .impact-report-grid strong,
+html.dark-mode body.app-page .planning-metrics strong,
+body.dark-mode.app-page .impact-report-grid strong,
+body.dark-mode.app-page .planning-metrics strong { color: #a7e0bf !important; }
+html.dark-mode body.app-page .planning-route-list strong,
+body.dark-mode.app-page .planning-route-list strong { color: #e5eee9 !important; }
+html.dark-mode body.app-page .planning-route-list span,
+body.dark-mode.app-page .planning-route-list span { color: #a7e0bf !important; }
+html.dark-mode body.app-page .impact-report-grid span,
+html.dark-mode body.app-page .planning-metrics span,
+html.dark-mode body.app-page .planning-route-list small,
+body.dark-mode.app-page .impact-report-grid span,
+body.dark-mode.app-page .planning-metrics span,
+body.dark-mode.app-page .planning-route-list small { color: #a8bbb0 !important; }
+
+/* number badges, pills and tags */
+html.dark-mode body.app-page .report-number,
+html.dark-mode body.app-page .popular-row span,
+html.dark-mode body.app-page .mode-context-pill,
+html.dark-mode body.app-page .folder-tag,
+body.dark-mode.app-page .report-number,
+body.dark-mode.app-page .popular-row span,
+body.dark-mode.app-page .mode-context-pill,
+body.dark-mode.app-page .folder-tag {
+  background: #294437 !important; color: #b7e9cc !important; border: 0 !important;
+}
+
+/* table lines, dashed dividers and list borders */
+html.dark-mode body.app-page .mini-head,
+html.dark-mode body.app-page .mini-cost,
+html.dark-mode body.app-page .popular-row,
+html.dark-mode body.app-page .planning-route-list > div,
+html.dark-mode body.app-page .saved-item,
+html.dark-mode body.app-page .settings-bottom-actions,
+body.dark-mode.app-page .mini-head,
+body.dark-mode.app-page .mini-cost,
+body.dark-mode.app-page .popular-row,
+body.dark-mode.app-page .planning-route-list > div,
+body.dark-mode.app-page .saved-item,
+body.dark-mode.app-page .settings-bottom-actions { border-color: #344940 !important; }
+html.dark-mode body.app-page .mini-cost strong,
+html.dark-mode body.app-page .mini-row strong,
+body.dark-mode.app-page .mini-cost strong,
+body.dark-mode.app-page .mini-row strong { color: #a7e0bf !important; }
+
+/* white highlight line (inset shadow) that glows on dark buttons, cards and inputs */
+html.dark-mode body.app-page .btn-outline:not(:hover),
+html.dark-mode body.app-page .btn-light:not(:hover),
+html.dark-mode body.app-page .route-swap-btn:not(:hover),
+html.dark-mode body.app-page .mode-option:not(:hover):not(.active),
+html.dark-mode body.app-page .route-field-input,
+body.dark-mode.app-page .btn-outline:not(:hover),
+body.dark-mode.app-page .btn-light:not(:hover),
+body.dark-mode.app-page .route-swap-btn:not(:hover),
+body.dark-mode.app-page .mode-option:not(:hover):not(.active),
+body.dark-mode.app-page .route-field-input { box-shadow: none !important; }
+html.dark-mode body.app-page .mode-option.active:not(:hover),
+body.dark-mode.app-page .mode-option.active:not(:hover) { box-shadow: 0 8px 22px rgba(0,0,0,.25) !important; }
+
+/* ---- 4. Desktop: header and subheader stay on screen while scrolling ---- */
+@media (min-width: 901px) {
+  html { scroll-padding-top: 140px; }
+  /* body must not be its own scroll box, otherwise sticky bars cannot stick to the window */
+  body.app-page { overflow: visible !important; }
+  body.app-page .app-header {
+    position: sticky !important; top: 0 !important; z-index: 60 !important;
+    height: 72px !important; min-height: 72px !important; box-sizing: border-box !important;
+    background: #fff !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+  }
+  body.app-page .sidebar {
+    position: sticky !important; top: 72px !important; z-index: 59 !important;
+    background: #fff !important;
+  }
+  html.dark-mode body.app-page .app-header,
+  body.dark-mode.app-page .app-header { background: #19231e !important; }
+  html.dark-mode body.app-page .sidebar,
+  body.dark-mode.app-page .sidebar { background: #151e1c !important; }
+}
