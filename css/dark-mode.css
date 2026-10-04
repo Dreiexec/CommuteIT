@@ -1,0 +1,446 @@
+html.dark-mode,
+html.dark-mode body,
+body.dark-mode {
+  --green: #69b99c;
+  --green-dark: #a0e2c9;
+  --green-soft: #263e35;
+  --ink: #e5eee9;
+  --muted: #a0b4aa;
+  --line: #344940;
+  background: #101713 !important;
+  color: #e5eee9 !important;
+  color-scheme: dark;
+}
+
+/* Main page and header surfaces */
+html.dark-mode .app-page,
+html.dark-mode .app-page .app-main,
+html.dark-mode .app-page .app-content,
+html.dark-mode .app-page .page-section,
+body.dark-mode.app-page,
+body.dark-mode.app-page .app-main,
+body.dark-mode.app-page .app-content {
+  background: #101713 !important;
+  color: #e5eee9 !important;
+  background-image: none !important;
+}
+
+html.dark-mode .app-page .app-header,
+html.dark-mode .app-page .sidebar,
+html.dark-mode .app-page .sidebar-top,
+html.dark-mode .app-page .side-bottom,
+body.dark-mode.app-page .app-header,
+body.dark-mode.app-page .sidebar {
+  background: #18221d !important;
+  color: #e5eee9 !important;
+  border-color: #344940 !important;
+}
+
+/* Brand and navigation */
+html.dark-mode .app-page .brand,
+html.dark-mode .app-page .brand span,
+html.dark-mode .app-page .header-brand,
+html.dark-mode .app-page .header-brand span {
+  color: #e5eee9 !important;
+}
+
+html.dark-mode .app-page .side-nav {
+  background: transparent !important;
+}
+
+html.dark-mode .app-page .side-link,
+html.dark-mode .app-page .side-nav .side-link,
+html.dark-mode .app-page .side-bottom .side-link {
+  background: #202d26 !important;
+  color: #d5e4db !important;
+  border: 1px solid #344940 !important;
+  box-shadow: none !important;
+}
+
+html.dark-mode .app-page .side-link:hover,
+html.dark-mode .app-page .side-nav .side-link:hover,
+html.dark-mode .app-page .side-bottom .side-link:hover {
+  background: #2b4035 !important;
+  color: #b7f0d8 !important;
+  border-color: #568d73 !important;
+  box-shadow: 0 0 12px rgba(105, 185, 156, 0.22) !important;
+}
+
+html.dark-mode .app-page .side-link.active,
+html.dark-mode .app-page .side-nav .side-link.active {
+  background: #315344 !important;
+  color: #c0f5dd !important;
+  border-color: #5a9a7a !important;
+}
+
+/* Cards, panels, reports and route surfaces */
+html.dark-mode .app-page .panel,
+html.dark-mode .app-page .stat-card,
+html.dark-mode .app-page .report-card,
+html.dark-mode .app-page .planner-chooser,
+html.dark-mode .app-page .planner-mode-panel,
+html.dark-mode .app-page .planner-workspace,
+html.dark-mode .app-page .mode-folder,
+html.dark-mode .app-page .route-card,
+html.dark-mode .app-page .route-summary,
+html.dark-mode .app-page .commute-intro,
+html.dark-mode .app-page .commute-itinerary,
+html.dark-mode .app-page .saved-route,
+html.dark-mode .app-page .saved-item,
+html.dark-mode .app-page .settings-anonymous-message,
+html.dark-mode .app-page .settings-account-panel,
+html.dark-mode .app-page .settings-theme-block,
+html.dark-mode .app-page .settings-name-block,
+html.dark-mode .app-page .preference-check,
+html.dark-mode .app-page .planning-insights,
+html.dark-mode .app-page .empty-state,
+body.dark-mode.app-page .panel,
+body.dark-mode.app-page .stat-card,
+body.dark-mode.app-page .report-card {
+  background: #19251f !important;
+  color: #e5eee9 !important;
+  border-color: #344940 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Headings and readable text */
+html.dark-mode .app-page h1,
+html.dark-mode .app-page h2,
+html.dark-mode .app-page h3,
+html.dark-mode .app-page h4,
+html.dark-mode .app-page strong,
+html.dark-mode .app-page .section-heading h1,
+html.dark-mode .app-page .panel h2,
+html.dark-mode .app-page .panel h3,
+html.dark-mode .app-page .stat-card strong,
+html.dark-mode .app-page .report-card strong {
+  color: #e9f4ed !important;
+}
+
+html.dark-mode .app-page p,
+html.dark-mode .app-page small,
+html.dark-mode .app-page label,
+html.dark-mode .app-page .eyebrow,
+html.dark-mode .app-page .route-meta,
+html.dark-mode .app-page .empty-state,
+html.dark-mode .app-page .impact-label,
+html.dark-mode .app-page .impact-footer,
+html.dark-mode .app-page .setting-row small,
+html.dark-mode .app-page .settings-theme-block p,
+html.dark-mode .app-page .settings-name-block p {
+  color: #a8bbb0 !important;
+}
+
+html.dark-mode .app-page a {
+  color: #9edfc1;
+}
+
+html.dark-mode .app-page a:hover {
+  color: #c4f5dd;
+}
+
+/* ALL buttons — eliminate unwanted white backgrounds */
+html.dark-mode .app-page button,
+html.dark-mode .app-page .btn,
+html.dark-mode .app-page input[type="button"],
+html.dark-mode .app-page input[type="submit"],
+html.dark-mode .app-page input[type="reset"],
+html.dark-mode .app-page .planner-choice,
+html.dark-mode .app-page .mode-option,
+html.dark-mode .app-page .route-card button,
+html.dark-mode .app-page .saved-actions button,
+html.dark-mode .app-page .route-feedback button,
+html.dark-mode .app-page .site-clock,
+html.dark-mode .app-page .site-weather,
+html.dark-mode .app-page .back-mode-btn,
+html.dark-mode .app-page .swap-route-btn,
+html.dark-mode .app-page .route-swap-btn,
+html.dark-mode .app-page .icon-btn,
+html.dark-mode .app-page .tutorial-confirm-close,
+html.dark-mode .app-page .tutorial-close,
+html.dark-mode .app-page .hazard-alert-close {
+  background-color: #26372e !important;
+  color: #dcece2 !important;
+  border-color: #40584a !important;
+  box-shadow: none !important;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease !important;
+}
+
+/* Primary actions use a smoky green fill */
+html.dark-mode .app-page .btn-primary,
+html.dark-mode .app-page button.btn-primary,
+html.dark-mode .app-page #routeBtn,
+html.dark-mode .app-page #dashPlanBtn,
+html.dark-mode .app-page #postCarpoolBtn,
+html.dark-mode .app-page #saveNameBtn,
+html.dark-mode .app-page #tutorialConfirmYes,
+html.dark-mode .app-page #tutorialNext {
+  background: linear-gradient(135deg, #35664f, #28523e) !important;
+  color: #f0fff6 !important;
+  border: 1px solid #54876a !important;
+}
+
+/* Secondary and outline buttons */
+html.dark-mode .app-page .btn-outline,
+html.dark-mode .app-page .btn-light,
+html.dark-mode .app-page .btn-soft,
+html.dark-mode .app-page .planner-choice-outline,
+html.dark-mode .app-page .mode-option,
+html.dark-mode .app-page .site-clock,
+html.dark-mode .app-page .site-weather {
+  background: #202e26 !important;
+  color: #d7e9de !important;
+  border-color: #40584a !important;
+}
+
+html.dark-mode .app-page .btn-ghost,
+html.dark-mode .app-page .back-mode-btn {
+  background: transparent !important;
+  color: #b5d9c2 !important;
+  border-color: #40584a !important;
+}
+
+/* Destructive actions */
+html.dark-mode .app-page .btn-danger,
+html.dark-mode .app-page .btn-danger-outline,
+html.dark-mode .app-page #logoutBtn,
+html.dark-mode .app-page #settingsLogoutBtn {
+  background: #382522 !important;
+  color: #ffc3b9 !important;
+  border-color: #70463e !important;
+}
+
+/* Hover glow for buttons */
+html.dark-mode .app-page button:hover,
+html.dark-mode .app-page .btn:hover,
+html.dark-mode .app-page input[type="button"]:hover,
+html.dark-mode .app-page input[type="submit"]:hover,
+html.dark-mode .app-page .planner-choice:hover,
+html.dark-mode .app-page .mode-option:hover,
+html.dark-mode .app-page .route-card button:hover,
+html.dark-mode .app-page .saved-actions button:hover,
+html.dark-mode .app-page .site-clock:hover,
+html.dark-mode .app-page .site-weather:hover {
+  background-color: #30483a !important;
+  color: #f0fff6 !important;
+  border-color: #75b38c !important;
+  box-shadow: 0 0 10px rgba(112, 202, 155, 0.24),
+              0 0 22px rgba(112, 202, 155, 0.12) !important;
+}
+
+html.dark-mode .app-page .btn-primary:hover,
+html.dark-mode .app-page #routeBtn:hover,
+html.dark-mode .app-page #dashPlanBtn:hover,
+html.dark-mode .app-page #postCarpoolBtn:hover,
+html.dark-mode .app-page #saveNameBtn:hover {
+  background: linear-gradient(135deg, #427c5e, #32664b) !important;
+}
+
+html.dark-mode .app-page .btn-danger-outline:hover,
+html.dark-mode .app-page #logoutBtn:hover,
+html.dark-mode .app-page #settingsLogoutBtn:hover {
+  background: #4a2d28 !important;
+  color: #ffe0d9 !important;
+  border-color: #a26054 !important;
+  box-shadow: 0 0 12px rgba(210, 112, 95, 0.16) !important;
+}
+
+html.dark-mode .app-page button:focus-visible,
+html.dark-mode .app-page a:focus-visible {
+  outline: 2px solid #7dc9a1 !important;
+  outline-offset: 3px !important;
+}
+
+/* Planner selection states */
+html.dark-mode .app-page .planner-choice-primary {
+  background: linear-gradient(135deg, #35664f, #28523e) !important;
+  color: #f0fff6 !important;
+  border-color: #54876a !important;
+}
+
+html.dark-mode .app-page .planner-choice-primary strong,
+html.dark-mode .app-page .planner-choice-primary small {
+  color: #f0fff6 !important;
+}
+
+html.dark-mode .app-page .mode-option.active {
+  background: #315344 !important;
+  color: #c0f5dd !important;
+  border-color: #70b68e !important;
+}
+
+html.dark-mode .app-page .mode-option strong,
+html.dark-mode .app-page .mode-option small {
+  color: inherit !important;
+}
+
+/* Inputs, selects and text areas */
+html.dark-mode .app-page input:not([type="checkbox"]):not([type="radio"]),
+html.dark-mode .app-page select,
+html.dark-mode .app-page textarea {
+  background: #121b16 !important;
+  color: #e5eee9 !important;
+  border-color: #3a5043 !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.16) !important;
+}
+
+html.dark-mode .app-page input::placeholder,
+html.dark-mode .app-page textarea::placeholder {
+  color: #81968a !important;
+  opacity: 1 !important;
+}
+
+html.dark-mode .app-page input:focus,
+html.dark-mode .app-page select:focus,
+html.dark-mode .app-page textarea:focus {
+  border-color: #72b992 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(105, 185, 156, 0.14) !important;
+}
+
+html.dark-mode .app-page input[type="checkbox"],
+html.dark-mode .app-page input[type="radio"] {
+  accent-color: #70b992;
+}
+
+/* Site information and small decorative elements */
+html.dark-mode .app-page .avatar {
+  background: #29493a !important;
+  color: #b9f0d2 !important;
+}
+
+html.dark-mode .app-page .feature-icon,
+html.dark-mode .app-page .live-pill,
+html.dark-mode .app-page .mode-context-pill,
+html.dark-mode .app-page .folder-tag,
+html.dark-mode .app-page .vehicle-number {
+  background: #294437 !important;
+  color: #b7e9cc !important;
+  border-color: #405e4b !important;
+}
+
+html.dark-mode .app-page .route-score,
+html.dark-mode .app-page .tree-equivalent,
+html.dark-mode .app-page .vehicle-row > strong,
+html.dark-mode .app-page .breakdown-total strong,
+html.dark-mode .app-page .train-fare-preview strong,
+html.dark-mode .app-page .commute-total strong {
+  color: #a7e0bf !important;
+}
+
+html.dark-mode .app-page .impact-ring {
+  background: conic-gradient(#70b992 var(--progress), #2b4034 0) !important;
+}
+
+html.dark-mode .app-page .impact-ring span {
+  color: #dff7e8 !important;
+}
+
+html.dark-mode .app-page .impact-visual,
+html.dark-mode .app-page .tree-landscape {
+  color: #b7e9cc !important;
+}
+
+/* Settings */
+html.dark-mode .app-page .setting-row,
+html.dark-mode .app-page .settings-theme-block,
+html.dark-mode .app-page .settings-name-block,
+html.dark-mode .app-page .settings-account-panel {
+  border-color: #344940 !important;
+}
+
+html.dark-mode .app-page .theme-toggle {
+  color: #b7e9cc !important;
+}
+
+html.dark-mode .app-page .theme-toggle-track {
+  background: #405447 !important;
+}
+
+html.dark-mode .app-page .theme-toggle-knob {
+  background: #c5e9d3 !important;
+}
+
+/* Route map overlays */
+html.dark-mode .app-page .map-shell {
+  border-color: #344940 !important;
+}
+
+html.dark-mode .app-page .map-loading {
+  background: rgba(16, 23, 19, 0.92) !important;
+  color: #dcece2 !important;
+}
+
+html.dark-mode .app-page .traffic-legend {
+  background: rgba(24, 34, 29, 0.96) !important;
+  color: #c7d9ce !important;
+  border-color: #40584a !important;
+}
+
+html.dark-mode .app-page .traffic-legend strong {
+  color: #e5eee9 !important;
+}
+
+/* Tutorial and alert overlays */
+html.dark-mode .tutorial-confirm-card,
+html.dark-mode .tutorial-card,
+html.dark-mode .hazard-alert {
+  background: #19251f !important;
+  color: #e5eee9 !important;
+  border-color: #40584a !important;
+}
+
+html.dark-mode .tutorial-confirm-card h2,
+html.dark-mode .tutorial-card h2,
+html.dark-mode .hazard-alert strong {
+  color: #e9f4ed !important;
+}
+
+html.dark-mode .tutorial-confirm-card p,
+html.dark-mode .tutorial-card p,
+html.dark-mode .hazard-alert p,
+html.dark-mode .hazard-alert small {
+  color: #a8bbb0 !important;
+}
+
+/* Keep disabled controls visibly disabled */
+html.dark-mode .app-page button:disabled,
+html.dark-mode .app-page .btn:disabled {
+  background: #202923 !important;
+  color: #74877b !important;
+  border-color: #303e34 !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  opacity: 0.65 !important;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html.dark-mode .app-page button,
+  html.dark-mode .app-page .btn {
+    transition: none !important;
+  }
+}
+
+/* Mobile dark surfaces */
+@media (max-width: 900px) {
+  html.dark-mode .app-page .sidebar {
+    background: #18221d !important;
+    border-color: #344940 !important;
+  }
+
+  html.dark-mode .app-page .side-nav .side-link {
+    background: #202d26 !important;
+    color: #d5e4db !important;
+  }
+
+  html.dark-mode .app-page .side-nav .side-link.active {
+    background: #315344 !important;
+    color: #c0f5dd !important;
+  }
+}
