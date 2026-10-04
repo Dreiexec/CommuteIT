@@ -4120,3 +4120,10 @@ body.dark-mode.app-page .mode-option.active:not(:hover) { box-shadow: 0 8px 22px
   html.dark-mode body.app-page .sidebar,
   body.dark-mode.app-page .sidebar { background: #151e1c !important; }
 }
+/* Version 95 — remove the X (close) button from the mobile menu. */
+body.app-page #closeSidebar {
+  display: none !important;
+}
+body.app-page .sidebar .sidebar-top {
+  justify-content: flex-start !important;
+}
