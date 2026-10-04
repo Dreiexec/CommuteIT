@@ -4127,19 +4127,12 @@ body.app-page #closeSidebar {
 body.app-page .sidebar .sidebar-top {
   justify-content: flex-start !important;
 }
-/* Version 96 — no blur anywhere in the tutorial; the page stays sharp behind it. */
+/* Version 96 — no blur in the tutorial (tour steps and the "Start a guided tutorial?" popup). The Welcome card keeps its blur. */
 html .tutorial-overlay .tutorial-dim,
 html .tutorial-dim,
 html .tutorial-confirm-modal .tutorial-confirm-dim,
 html .tutorial-confirm-dim,
-html .landing-page .tutorial-confirm-dim,
-html .landing-welcome-backdrop,
-html .landing-welcome-card {
+html .landing-page .tutorial-confirm-dim {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-}
-
-/* The Welcome card is solid now, so the page text behind it does not show through. */
-html .landing-welcome-card {
-  background: linear-gradient(160deg, #0a2c25, #051a16) !important;
 }
