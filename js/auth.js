@@ -110,7 +110,7 @@
     document.addEventListener("keydown", event => { if (event.key === "Escape") setOptionsOpen(false); });
   }
   if (optionsHint) {
-    window.setTimeout(() => optionsHint.classList.add("is-hidden"), 10000);
+    window.setTimeout(() => optionsHint.classList.add("is-hidden"), 15000);
   }
 
   const landingInfoBtn = document.getElementById("landingInfoBtn");
